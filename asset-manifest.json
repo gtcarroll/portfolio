@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.1ac4eb14.css",
+    "main.js": "/portfolio/static/js/main.d52d5a72.js",
+    "static/media/responsive_mobile_light.jpg": "/portfolio/static/media/responsive_mobile_light.46334383243fbf77c9ee.jpg",
+    "static/media/responsive_mobile_dark.jpg": "/portfolio/static/media/responsive_mobile_dark.a7b92dbbe4a45200956b.jpg",
+    "static/media/responsive_tablet_light.jpg": "/portfolio/static/media/responsive_tablet_light.2fd1fc0da8601427b446.jpg",
+    "static/media/responsive_tablet_dark.jpg": "/portfolio/static/media/responsive_tablet_dark.d9d4aae2c798fab9d636.jpg",
+    "static/media/responsive_desktop_light.jpg": "/portfolio/static/media/responsive_desktop_light.8a02322067f4d0664ec9.jpg",
+    "static/media/responsive_desktop_dark.jpg": "/portfolio/static/media/responsive_desktop_dark.c0f5e7693579646f6f33.jpg",
+    "static/media/sun.svg": "/portfolio/static/media/sun.1abd5f060b396cb576d181f89e623c78.svg",
+    "static/media/measuring-cup.svg": "/portfolio/static/media/measuring-cup.ff0368c2408d3af055883f2fb327c20b.svg",
+    "static/media/gluten-free.svg": "/portfolio/static/media/gluten-free.c85977fea64b0a7a4be18d063ea13a5a.svg",
+    "static/media/vegan-plus.svg": "/portfolio/static/media/vegan-plus.8f34a6f194ceab111eec1475776b8225.svg",
+    "static/media/gram-weight.svg": "/portfolio/static/media/gram-weight.5257ddd54b916c117737b8306bb0055a.svg",
+    "static/media/vegetarian.svg": "/portfolio/static/media/vegetarian.66c482022bec0e4989e7f9a277ba3ca0.svg",
+    "index.html": "/portfolio/index.html",
+    "static/media/moon.svg": "/portfolio/static/media/moon.38e0fa4af5f95b18c3f84344cb2555db.svg",
+    "main.1ac4eb14.css.map": "/portfolio/static/css/main.1ac4eb14.css.map",
+    "main.d52d5a72.js.map": "/portfolio/static/js/main.d52d5a72.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ac4eb14.css",
+    "static/js/main.d52d5a72.js"
+  ]
+}
