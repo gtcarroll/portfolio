@@ -1,0 +1,80 @@
+{
+    "_id": "0",
+    "name": "Peanut Butter Cookies",
+    "url": "peanut-butter-cookies",
+    "ingredients": [
+        {
+            "ingredient": "brown sugar",
+            "imperial": {
+                "amount": "1 3/4",
+                "measure": "cup"
+            },
+            "metric": {
+                "amount": "400",
+                "measure": "g"
+            }
+        },
+        {
+            "ingredient": "eggs",
+            "imperial": {
+                "amount": "2"
+            },
+            "metric": {
+                "amount": "2"
+            }
+        },
+        {
+            "ingredient": "vanilla extract",
+            "imperial": {
+                "amount": "1/2",
+                "measure": "tsp"
+            },
+            "metric": {
+                "amount": "2 1/2",
+                "measure": "ml"
+            }
+        },
+        {
+            "ingredient": "peanut butter",
+            "imperial": {
+                "amount": "1 3/4",
+                "measure": "cup"
+            },
+            "metric": {
+                "amount": "480",
+                "measure": "g"
+            }
+        },
+        {
+            "ingredient": "salt"
+        }
+    ],
+    "instructions": {
+        "steps": [
+            {
+                "task": "Mix the dough",
+                "subtasks": [
+                    {
+                        "pretext": "In a large bowl, mix together",
+                        "ingredients": ["brown sugar", "eggs"],
+                        "text": "until smooth."
+                    }
+                ]
+            }
+        ]
+    },
+    "yields": {
+        "amount": "24",
+        "measure": "cookies"
+    },
+    "attribution": {
+        "text": "adapted from",
+        "linkText": "Ovenly",
+        "linkRef": "https://oven.ly/blogs/recipes/salted-peanut-butter-cookies"
+    },
+    "tags": {
+        "vegetarian": true,
+        "vegan": false,
+        "glutenFree": true
+    }
+}

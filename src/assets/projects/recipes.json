@@ -1,0 +1,49 @@
+{
+    "_id": 2,
+    "name": "Recipes",
+    "url": "recipes",
+    "desc": "",
+    "goals": [
+        "Create a <b>simple</b>, <b>focused</b> recipe site without the clutter of ads and blog content",
+        "Prioritize <b>accessibility</b> and <b>visual clarity</b> while maintaining a <b>colorful</b> palette",
+        "Provide <b>useful tools</b> that make you <b>want</b> to get your kitchen dirty"
+    ],
+    "features": [
+        {
+            "text":"Dynamic color-theming with smooth transitions",
+            "component": "ThemeButtons",
+            "flexDirection": "row"
+        },
+        {
+            "text": "Beautiful svg icons designed and created entirely by me",
+            "component": "IconGallery",
+            "flexDirection": "row-reverse"
+        },
+        {
+            "text": "Over-sized button hitboxes for increased accessibility",
+            "component": "AccessibleButton",
+            "flexDirection": "row"
+        },
+        {
+            "text": "An entire spectrum of colors, all adhering to the WCAG's text and graphics contrast requirements",
+            "component": "ColorContrast",
+            "flexDirection": "row-reverse"
+        },
+        {
+            "text": "Smart ingredient list that can easily scale recipes and swap between metric or imperial measurements",
+            "component": "IngredientList",
+            "flexDirection": "column"
+        },
+        {
+            "text": "Thoughtful instructions that include ingredient measurements so you don't have to double-check",
+            "component": "InstructionList",
+            "flexDirection": "column"
+        },
+        {
+            "text": "Highly responsive page layout designed for any device",
+            "component": "ResponsiveDesign",
+            "flexDirection": "column"
+        }
+    ],
+    "learned": []
+}
