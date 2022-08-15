@@ -30,7 +30,7 @@
             "flexDirection": "column"
         },
         {
-            "text": "Thoughtful instructions that include ingredient measurements so you don't have to double-check",
+            "text": "Thoughtful instructions that include ingredient amounts so you don't have to double-check",
             "component": "InstructionList",
             "flexDirection": "column"
         },
@@ -45,5 +45,9 @@
             "flexDirection": "row-reverse"
         }
     ],
-    "learned": []
+    "learned": [
+        "How to use React's <b>Contexts</b> to globally update an app's color and layout",
+        "How to use React's <b>BrowserRouter</b> and <b>HashRouter</b> to handle stateful urls in a single-page app",
+        "How to implement a <b>Full-Stack</b> web app using <b>MongoDB</b> and <b>Express.js</b>"
+    ]
 }
