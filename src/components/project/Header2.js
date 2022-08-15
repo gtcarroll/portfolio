@@ -5,11 +5,11 @@ import { ThemeContext, LayoutContext, units, styles } from "../../context";
 export const Header2 = (props) => {
   const { theme } = useContext(ThemeContext);
   const { layout } = useContext(LayoutContext);
+
   return (
     <Header2Div
       style={{
         fontSize: layout.fontSize.h2,
-        maxWidth: layout.width.header,
         color: theme.primary,
       }}
     >
@@ -24,7 +24,7 @@ Header2.defaultProps = {
 
 const Header2Div = styled.h2`
   // animation
-  transition: ${styles.transition.bodyALL};
+  transition: ${styles.transition.body};
 
   // flexbox
   display: flex;
@@ -32,8 +32,6 @@ const Header2Div = styled.h2`
   justify-content: center;
 
   // box model
-  margin: auto;
-  border-radius: ${styles.borderRadius.header};
   width: 100%;
   padding-bottom: ${units.px0};
 

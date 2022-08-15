@@ -1,22 +1,14 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { MenuHeader } from "./MenuHeader";
-import {
-  ThemeContext,
-  styles,
-  units,
-  functions,
-  LayoutContext,
-} from "../../../context";
+import { ThemeContext, styles, units } from "../../../context";
 
 export const ResponsiveExample = (props) => {
   const { theme } = useContext(ThemeContext);
-  const { layout } = useContext(LayoutContext);
   return (
     <ColDiv
       style={{
         width: props.width,
-        // height: layout.name === "mobile" ? "10rem" : "15rem",
       }}
     >
       <MenuHeader text={props.text} isFullWidth isBorderless />
@@ -41,6 +33,7 @@ const ColDiv = styled.div`
 
   // box model
   border-radius: ${styles.borderRadius.button};
+  padding-bottom: ${units.rem2};
   height: 15rem;
 `;
 
@@ -54,8 +47,6 @@ const ImageDiv = styled.div`
   max-width: ${units.pxImg};
   border: ${styles.border.button};
   border-radius: ${styles.borderRadius.button};
-  /* border-top-left-radius: 0;
-  border-top-right-radius: 0; */
   box-sizing: border-box;
 
   // background image

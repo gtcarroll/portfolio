@@ -78,6 +78,7 @@ export const Project = (props) => {
         items={props[section.key]}
         url={props.url}
         components={components[section.key]}
+        isFeatures={section.title === "Features"}
       />
     );
   });
@@ -96,7 +97,7 @@ const ProjectDiv = styled.div`
   // flexbox
   display: flex;
   flex-direction: column;
-  gap: ${units.rem1};
+  /* gap: ${units.rem1}; */
 
   // box-model
   margin: 0 auto;

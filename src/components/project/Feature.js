@@ -21,7 +21,6 @@ export const Feature = (props) => {
   return (
     <FeatureDiv
       style={{
-        // width: layout.width.ingredients,
         borderColor: props.isBorderless ? "transparent" : transparentPrimary,
         flexDirection: props.flexDirection,
         flexWrap: layout.name === "mobile" ? "wrap" : "nowrap",
@@ -51,7 +50,7 @@ Feature.defaultProps = {
 
 const FeatureDiv = styled.li`
   // animation
-  transition: ${styles.transition.body};
+  transition: border ${styles.transition.body};
 
   // flexbox
   display: flex;
@@ -63,17 +62,15 @@ const FeatureDiv = styled.li`
   // box-model
   margin: ${units.rem0} auto;
   padding: ${units.rem0} 0;
+  padding-bottom: ${units.rem2};
   width: 100%;
 `;
-const Text = styled.p`
-  // animation
-  transition: ${styles.transition.body};
-
+const Text = styled.div`
   // box-model
   margin: auto;
-  width: 100%;
-  padding: ${units.rem1} 0;
-  padding-bottom: ${units.rem2};
+  width: calc(100% - 2 * ${units.rem2});
+  padding: ${units.rem2};
+  padding-top: ${units.rem1};
 
   // typography
   text-align: center;

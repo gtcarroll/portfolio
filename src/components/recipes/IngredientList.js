@@ -1,12 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import {
-  ThemeContext,
-  LayoutContext,
-  units,
-  styles,
-  functions,
-} from "../../context";
+import { ThemeContext, LayoutContext, units, styles } from "../../context";
 import {
   Ingredient,
   MultiplierTray,
