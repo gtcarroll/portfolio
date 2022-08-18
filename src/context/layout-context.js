@@ -18,6 +18,7 @@ export const layouts = {
       h2: "1.8rem",
       h3: "1.5rem",
       body: "1.2rem",
+      caption: "1rem",
     },
   },
   tablet: {
@@ -31,13 +32,14 @@ export const layouts = {
       menuSpacer: "1.8rem",
     },
     height: {
-      hero: "16rem",
+      hero: "21rem",
     },
     fontSize: {
       h1: "2.55rem",
       h2: "1.95rem",
       h3: "1.65rem",
       body: "1.35rem",
+      caption: "1.15rem",
     },
   },
   laptop: {
@@ -51,13 +53,14 @@ export const layouts = {
       menuSpacer: "2.4rem",
     },
     height: {
-      hero: "16rem",
+      hero: "24rem",
     },
     fontSize: {
       h1: "2.7rem",
       h2: "2.1rem",
       h3: "1.8rem",
       body: "1.5rem",
+      caption: "1.2rem",
     },
   },
   desktop: {
@@ -71,13 +74,14 @@ export const layouts = {
       menuSpacer: "2.4rem",
     },
     height: {
-      hero: "20rem",
+      hero: "24rem",
     },
     fontSize: {
       h1: "2.7rem",
       h2: "2.1rem",
       h3: "1.8rem",
       body: "1.5rem",
+      caption: "1.2rem",
     },
   },
 };

@@ -31,7 +31,6 @@ export const styles = {
   },
   transition: {
     body: "0.5s ease",
-    bodyALL: "width 0.5s ease, color 0.5s ease, background-color 0.5s ease",
     button: "0.2s ease-out",
   },
   transparency: {

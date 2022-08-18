@@ -60,7 +60,7 @@ export const ThemeButtons = (props) => {
         isActive={isActiveTheme}
         onClick={() => {
           setThemesIndex(i);
-          themeClick(themes[item.label]);
+          themeClick(themes[item.label].recipes);
         }}
       />
     );

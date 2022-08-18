@@ -52,7 +52,7 @@ export const App = () => {
     ? "dark"
     : "light";
   document.documentElement.style.setProperty("color-scheme", preferredTheme);
-  const [theme, setTheme] = useState(themes[preferredTheme]);
+  const [theme, setTheme] = useState(themes[preferredTheme].default);
   const [layout, setLayout] = useState(getLayout(window.innerWidth));
 
   // create project components

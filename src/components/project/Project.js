@@ -1,6 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import styled from "styled-components";
-import { ThemeContext, units, functions, LayoutContext } from "../../context";
+import {
+  ThemeContext,
+  units,
+  styles,
+  functions,
+  LayoutContext,
+} from "../../context";
 import { Header1 } from "./Header1";
 import { Section } from "./Section";
 import {
@@ -11,7 +17,7 @@ import {
   ResponsiveDesign,
   IconGallery,
 } from "../recipes";
-import { ContentContainer } from "../common/ContentContainer";
+import { ContentContainer, Hero } from "../common";
 import { ColorContrast } from "../recipes/ColorContrast";
 
 export const Project = (props) => {
@@ -67,7 +73,6 @@ export const Project = (props) => {
     { title: "Project Goals", key: "goals" },
     { title: "Features", key: "features" },
     { title: "What I Learned", key: "learned" },
-    // { title: "Update Ideas", key: "ideas" },
   ];
 
   let sections = sectionData.map((section, i) => {
@@ -87,6 +92,23 @@ export const Project = (props) => {
     <ProjectDiv>
       <ContentContainer width={layout.width.ingredients}>
         <Header1 text={props.name} color={theme.foreground} />
+        <Hero
+          project={"recipes"}
+          url={props.url}
+          img={
+            theme.isDark
+              ? "responsive_desktop_dark"
+              : "responsive_desktop_light"
+          }
+          to={"https://gtcarroll.github.io/recipes/"}
+        />
+        {/* <ImageDiv
+          style={{
+            backgroundImage: `url(${heroD})`,
+            boxShadow: styles.boxShadow.card,
+            borderColor: theme.primaryLight,
+          }}
+        /> */}
         {sections}
       </ContentContainer>
     </ProjectDiv>
@@ -101,5 +123,24 @@ const ProjectDiv = styled.div`
 
   // box-model
   margin: 0 auto;
+  margin-bottom: ${units.rem6};
   width: 100%;
+`;
+
+const ImageDiv = styled.div`
+  // animation
+  transition: ${styles.transition.body};
+
+  // box model
+  width: 100%;
+  height: 19rem;
+  max-width: ${units.pxImg};
+  border: ${styles.border.button};
+  border-radius: ${styles.borderRadius.button};
+  box-sizing: border-box;
+
+  // background image
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
 `;

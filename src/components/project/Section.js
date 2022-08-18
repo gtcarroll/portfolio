@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ThemeContext, functions, units, styles } from "../../context";
+import {
+  ThemeContext,
+  functions,
+  units,
+  styles,
+  useThemeChange,
+} from "../../context";
 import { Header2 } from "./Header2";
 import { Feature } from "./Feature";
 import { ListItem } from "./ListItem";
@@ -44,6 +50,7 @@ const buildListItems = (props, gradient) => {
 };
 
 export const Section = (props) => {
+  const containerRef = useThemeChange(props.url);
   const { theme } = useContext(ThemeContext);
   let transparentPrimary = functions.addAlpha(theme.primary, 0.3);
   let gradient = functions.getColorGradient(
@@ -53,7 +60,7 @@ export const Section = (props) => {
   );
   let listItems = buildListItems(props, gradient);
   return (
-    <SectionDiv>
+    <SectionDiv ref={containerRef}>
       <Header2 text={props.title} />
       {!props.isFeatures && (
         <Underline
