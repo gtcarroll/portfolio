@@ -52,7 +52,7 @@ const buildListItems = (props, gradient) => {
 export const Section = (props) => {
   const containerRef = useThemeChange(props.url);
   const { theme } = useContext(ThemeContext);
-  let transparentPrimary = functions.addAlpha(theme.primary, 0.3);
+  // let transparentPrimary = functions.addAlpha(theme.primary, 0.3);
   let gradient = functions.getColorGradient(
     countTags(props.items),
     theme.accent1,
@@ -65,7 +65,7 @@ export const Section = (props) => {
       {!props.isFeatures && (
         <Underline
           style={{
-            borderColor: transparentPrimary,
+            borderColor: theme.primaryLight,
           }}
         />
       )}

@@ -39,7 +39,7 @@ export const SudokooHeader = (props) => {
       <Overlay
         style={{
           // maxWidth: layout.width.header,
-          color: theme.primary,
+          color: theme.accent1,
           background: `conic-gradient(
             ${transparent.accent2} 0deg,
             ${transparent.accent1} 120deg,

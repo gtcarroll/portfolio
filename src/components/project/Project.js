@@ -54,21 +54,3 @@ const ProjectDiv = styled.div`
   margin-bottom: ${units.rem6};
   width: 100%;
 `;
-
-const ImageDiv = styled.div`
-  // animation
-  transition: ${styles.transition.body};
-
-  // box model
-  width: 100%;
-  height: 19rem;
-  max-width: ${units.pxImg};
-  border: ${styles.border.button};
-  border-radius: ${styles.borderRadius.button};
-  box-sizing: border-box;
-
-  // background image
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-`;
