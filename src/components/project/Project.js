@@ -93,14 +93,8 @@ export const Project = (props) => {
       <ContentContainer width={layout.width.ingredients}>
         <Header1 text={props.name} color={theme.foreground} />
         <Hero
-          project={"recipes"}
-          url={props.url}
-          img={
-            theme.isDark
-              ? "responsive_desktop_dark"
-              : "responsive_desktop_light"
-          }
-          to={"https://gtcarroll.github.io/recipes/"}
+          project={props.url}
+          img={theme.isDark ? "hero_dark" : "hero_light"}
         />
         {/* <ImageDiv
           style={{

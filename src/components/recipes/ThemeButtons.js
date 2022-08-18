@@ -45,7 +45,7 @@ export const ThemeButtons = (props) => {
     setTheme(newTheme);
   };
   let themeButtons = themesData.map((item, i) => {
-    let isActiveTheme = i === themesIndex;
+    let isActiveTheme = i === (theme.isDark ? 0 : 1); ////themesIndex;
     return (
       <IconButton
         key={i}

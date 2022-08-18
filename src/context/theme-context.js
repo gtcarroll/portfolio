@@ -31,8 +31,8 @@ export const themes = {
       isDark: true,
       foreground: "rgb(231, 231, 231)", // #e7e7e7
       background: "rgb(8, 8, 8)", // #080808
-      overlay: "rgb(18, 18, 18)", // #121212
-      overlaySolid: "rgb(18, 18, 18)", // #121212
+      overlay: "rgb(32, 32, 32)", // #202020
+      overlaySolid: "rgb(32, 32, 32)", // #202020
       scrollbar: "rgb(49, 49, 49)", // #313131
 
       accent1: "rgb(182, 231, 166)", // #b6e7a6
@@ -85,8 +85,8 @@ export const themes = {
       isDark: false,
       foreground: "rgb(231, 231, 231)", // #e7e7e7
       background: "rgb(8, 8, 8)", // #080808
-      overlay: "rgb(18, 18, 18)", // #121212
-      overlaySolid: "rgb(18, 18, 18)", // #121212
+      overlay: "rgb(32, 32, 32)", // #202020
+      overlaySolid: "rgb(32, 32, 32)", // #202020
       scrollbar: "rgb(49, 49, 49)", // #313131
 
       accent1: "rgb(182, 231, 166)", // #b6e7a6

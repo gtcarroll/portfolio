@@ -7,8 +7,25 @@ export const useThemeChange = (themeName, options) => {
 
   const callbackFunction = (entries) => {
     if (entries[0].isIntersecting) {
-      console.log(themeName);
-      setTheme(themes[theme.isDark ? "dark" : "light"][themeName]);
+      const newTheme = themes[theme.isDark ? "dark" : "light"][themeName];
+
+      // update color variables
+      document.documentElement.style.setProperty(
+        "--root-background-color",
+        newTheme.background
+      );
+      document.documentElement.style.setProperty(
+        "--root-scrollbar-color",
+        newTheme.scrollbar + " " + newTheme.background
+      );
+
+      // update meta tags
+      document
+        .querySelector("meta[name='theme-color']")
+        .setAttribute("content", newTheme.background);
+
+      // update state
+      setTheme(newTheme);
     }
   };
 
@@ -17,7 +34,7 @@ export const useThemeChange = (themeName, options) => {
     if (containerRef.current) observer.observe(containerRef.current);
 
     return () => observer.disconnect();
-  }, [containerRef, options]);
+  }, [containerRef, options, theme]);
 
   return containerRef;
 };

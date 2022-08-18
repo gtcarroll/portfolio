@@ -10,8 +10,7 @@ import {
 } from "../../context";
 
 export const Hero = (props) => {
-  const containerRef = useThemeChange(props.url);
-
+  const containerRef = useThemeChange(props.project);
   const [isHovered, setIsHovered] = useState(false);
   const { layout } = useContext(LayoutContext);
   const { theme } = useContext(ThemeContext);
@@ -19,7 +18,7 @@ export const Hero = (props) => {
   return (
     <Link
       ref={containerRef}
-      href={props.to}
+      href={"https://gtcarroll.github.io/" + props.project}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
@@ -27,7 +26,6 @@ export const Hero = (props) => {
     >
       <Fig>
         <HeroImg
-          href={props.to}
           style={{
             backgroundImage: `url(${image})`,
             height: layout.height.hero,
