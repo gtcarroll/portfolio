@@ -1,12 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import {
-  LayoutContext,
-  ThemeContext,
-  units,
-  styles,
-  functions,
-} from "../../context";
+import { LayoutContext, ThemeContext, units, styles } from "../../context";
 import { ContentContainer } from "../common/ContentContainer";
 
 export const Feature = (props) => {
@@ -16,12 +10,10 @@ export const Feature = (props) => {
   const image = props.image
     ? require(`../../assets/photos/${props.url}/${props.image}.png`)
     : null;
-
-  let transparentPrimary = functions.addAlpha(theme.primary, 0.3);
   return (
     <FeatureDiv
       style={{
-        borderColor: props.isBorderless ? "transparent" : transparentPrimary,
+        borderColor: props.isBorderless ? "transparent" : theme.primaryLight,
         flexDirection: props.flexDirection,
         flexWrap: layout.name === "mobile" ? "wrap" : "nowrap",
         maxWidth: layout.width.ingredients,

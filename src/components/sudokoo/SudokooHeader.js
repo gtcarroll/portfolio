@@ -71,6 +71,9 @@ SudokooHeader.defaultProps = {
 };
 
 const Overlay = styled.h1`
+  // animation
+  transition: ${styles.transition.body};
+
   // flexbox
   display: flex;
   align-items: center;
