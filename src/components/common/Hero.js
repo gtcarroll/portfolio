@@ -10,14 +10,12 @@ import {
 } from "../../context";
 
 export const Hero = (props) => {
-  const containerRef = useThemeChange(props.project);
   const [isHovered, setIsHovered] = useState(false);
   const { layout } = useContext(LayoutContext);
   const { theme } = useContext(ThemeContext);
   const image = require(`../../assets/photos/${props.project}/${props.img}.jpg`);
   return (
     <Link
-      ref={containerRef}
       href={"https://gtcarroll.github.io/" + props.project}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

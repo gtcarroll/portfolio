@@ -36,6 +36,5 @@ const Header2Div = styled.h2`
   padding-bottom: ${units.px0};
 
   // typography
-  font-family: ${styles.fontFamily.sansSerif};
   text-align: center;
 `;

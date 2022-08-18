@@ -1,9 +1,10 @@
 import { useEffect, useRef, useContext } from "react";
 import { ThemeContext, themes } from "./theme-context";
 
-export const useThemeChange = (themeName, options) => {
+export const useThemeChange = (themeName) => {
   const { theme, setTheme } = useContext(ThemeContext);
   const containerRef = useRef(null);
+  const options = { threshold: 1.0 };
 
   const callbackFunction = (entries) => {
     if (entries[0].isIntersecting) {

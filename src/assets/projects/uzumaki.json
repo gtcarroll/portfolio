@@ -3,7 +3,15 @@
     "name": "Uzumaki",
     "url": "uzumaki",
     "desc": "",
-    "goals": [],
+    "goals": [
+        "Create a <b>simple</b>, <b>focused</b> recipe site without the clutter of ads and blog content",
+        "Prioritize <b>accessibility</b> and <b>visual clarity</b> while maintaining a <b>colorful</b> palette",
+        "Provide <b>useful tools</b> that make you <b>want</b> to get your kitchen dirty"
+    ],
     "features": [],
-    "learned": []
+    "learned": [
+        "How to use React's <b>Contexts</b> to globally update an app's color and layout",
+        "How to use React's <b>BrowserRouter</b> and <b>HashRouter</b> to handle stateful urls in a single-page app",
+        "How to implement a <b>Full-Stack</b> web app using <b>MongoDB</b> and <b>Express.js</b>"
+    ]
 }

@@ -6,8 +6,21 @@ import {
   LayoutContext,
   layouts,
   styles,
+  functions,
 } from "./context";
 import { Project } from "./components/project";
+import {
+  RecipesHeader,
+  ThemeButtons,
+  IngredientList,
+  InstructionList,
+  AccessibleButton,
+  ResponsiveDesign,
+  IconGallery,
+  ColorContrast,
+} from "./components/recipes";
+import { SudokooHeader } from "./components/sudokoo";
+import { UzumakiHeader } from "./components/uzumaki";
 
 export const App = () => {
   const getLayout = (width) => {
@@ -56,14 +69,86 @@ export const App = () => {
   const [layout, setLayout] = useState(getLayout(window.innerWidth));
 
   // create project components
+  const recipe = require("./components/recipes/dependencies/peanut-butter-cookies.json");
   const projectData = [
     require("./assets/projects/recipes.json"),
     require(`./assets/projects/sudokoo.json`),
     require("./assets/projects/uzumaki.json"),
   ];
 
+  const [state, setState] = useState({
+    ingredients: recipe.ingredients,
+    yields: recipe.yields,
+    units: "imperial",
+  });
+  const originalState = {
+    ingredients: recipe.ingredients,
+    yields: recipe.yields,
+  };
+  const gradient = functions.getColorGradient(
+    recipe.ingredients.length,
+    theme.accent1,
+    theme.accent2
+  );
+  const components = {
+    recipes: {
+      Header: {
+        tag: RecipesHeader,
+        props: {},
+      },
+      IngredientList: {
+        tag: IngredientList,
+        props: {
+          units: state.units,
+          ingredients: state.ingredients,
+          yields: state.yields,
+          setState: setState,
+          originalState: originalState,
+          gradient: gradient,
+        },
+      },
+      InstructionList: {
+        tag: InstructionList,
+        props: {
+          units: state.units,
+          ingredients: state.ingredients,
+          instructions: recipe.instructions,
+          gradient: gradient,
+        },
+      },
+      ThemeButtons: { tag: ThemeButtons, props: {} },
+      AccessibleButton: { tag: AccessibleButton, props: {} },
+      ResponsiveDesign: { tag: ResponsiveDesign, props: {} },
+      IconGallery: { tag: IconGallery, props: {} },
+      ColorContrast: { tag: ColorContrast, props: {} },
+    },
+    sudokoo: {
+      Header: {
+        tag: SudokooHeader,
+        props: {},
+      },
+    },
+    uzumaki: {
+      Header: {
+        tag: UzumakiHeader,
+        props: {},
+      },
+    },
+  };
+  const fontFamily = {
+    recipes: styles.fontFamily.sansSerif,
+    sudokoo: styles.fontFamily.sansSerif,
+    uzumaki: styles.fontFamily.monospace,
+  };
   let projects = projectData.map((project, i) => {
-    return <Project key={i} {...project} />;
+    return (
+      <Project
+        key={i}
+        fontFamily={fontFamily[project.url]}
+        components={components[project.url]}
+        {...project}
+      />
+    );
   });
 
   return (
