@@ -12,7 +12,6 @@ import { Header2 } from "./Header2";
 import { Header3 } from "./Header3";
 import { Note } from "./Note";
 import { MenuHeader } from "./MenuHeader";
-import { ResponsiveExample } from "./ResponsiveExample";
 
 export {
   Ingredient,
@@ -29,5 +28,4 @@ export {
   Header3,
   Note,
   MenuHeader,
-  ResponsiveExample,
 };

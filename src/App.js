@@ -9,18 +9,23 @@ import {
   functions,
 } from "./context";
 import { Project } from "./components/project";
+import { ImageExample } from "./components/common";
 import {
   RecipesHeader,
   ThemeButtons,
   IngredientList,
   InstructionList,
   AccessibleButton,
-  ResponsiveDesign,
+  ResponsiveRecipes,
   IconGallery,
   ColorContrast,
 } from "./components/recipes";
-import { SudokooHeader } from "./components/sudokoo";
-import { UzumakiHeader } from "./components/uzumaki";
+import {
+  SudokooHeader,
+  ResponsiveSudokoo,
+  ButtonTray,
+} from "./components/sudokoo";
+import { UzumakiHeader, ResponsiveDesign } from "./components/uzumaki";
 
 export const App = () => {
   const getLayout = (width) => {
@@ -118,20 +123,50 @@ export const App = () => {
       },
       ThemeButtons: { tag: ThemeButtons, props: {} },
       AccessibleButton: { tag: AccessibleButton, props: {} },
-      ResponsiveDesign: { tag: ResponsiveDesign, props: {} },
+      ResponsiveRecipes: { tag: ResponsiveRecipes, props: {} },
       IconGallery: { tag: IconGallery, props: {} },
       ColorContrast: { tag: ColorContrast, props: {} },
     },
     sudokoo: {
-      Header: {
-        tag: SudokooHeader,
-        props: {},
+      Header: { tag: SudokooHeader, props: {} },
+      ResponsiveSudokoo: { tag: ResponsiveSudokoo, props: {} },
+      ButtonTray: { tag: ButtonTray, props: {} },
+      CrowImage: {
+        tag: ImageExample,
+        props: { project: "sudokoo", img: "crow" },
+      },
+      InputImage: {
+        tag: ImageExample,
+        props: { project: "sudokoo", img: "input" },
+      },
+      HighlightImage: {
+        tag: ImageExample,
+        props: { project: "sudokoo", img: "highlight" },
       },
     },
     uzumaki: {
-      Header: {
-        tag: UzumakiHeader,
-        props: {},
+      Header: { tag: UzumakiHeader, props: {} },
+      ResponsiveDesign: { tag: ResponsiveDesign, props: {} },
+      SpawnImage: {
+        tag: ImageExample,
+        props: { project: "uzumaki", img: "spawn", isDark: theme.isDark },
+      },
+      TraceImage: {
+        tag: ImageExample,
+        props: { project: "uzumaki", img: "trace", isDark: theme.isDark },
+      },
+      WarpImage: {
+        tag: ImageExample,
+        props: { project: "uzumaki", img: "warp", isDark: theme.isDark },
+      },
+      WitnessImage: {
+        tag: ImageExample,
+        props: {
+          project: "uzumaki",
+          img: "witness",
+          isDark: theme.isDark,
+          isWide: true,
+        },
       },
     },
   };

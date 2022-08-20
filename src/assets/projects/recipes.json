@@ -36,7 +36,7 @@
         },
         {
             "text": "Highly responsive page layout designed for any device",
-            "component": "ResponsiveDesign",
+            "component": "ResponsiveRecipes",
             "flexDirection": "column"
         },
         {

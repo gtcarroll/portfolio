@@ -4,14 +4,40 @@
     "url": "sudokoo",
     "desc": "",
     "goals": [
-        "Create a <b>simple</b>, <b>focused</b> recipe site without the clutter of ads and blog content",
-        "Prioritize <b>accessibility</b> and <b>visual clarity</b> while maintaining a <b>colorful</b> palette",
-        "Provide <b>useful tools</b> that make you <b>want</b> to get your kitchen dirty"
+        "Visualize the <b>spatial interactions</b> that are found when <b>solving</b> a sudoku",
+        "Gain <b>development experience</b> by building my first <b>React</b> web app from scratch",
+        "Make the <b>joy</b> of sudoku <b>accessible</b> without the need for <b>arcane</b> knowledge"
     ],
-    "features": [],
+    "features": [
+        {
+            "text": "Hueristic-based sudoku solving AI that explains each step in its process",
+            "component": "CrowImage",
+            "flexDirection": "row"
+        },
+        {
+            "text": "Enter your own sudoku, or get started right away with a random one",
+            "component": "InputImage",
+            "flexDirection": "row-reverse"
+        },
+        {
+            "text": "Animated visuals highlight the row, column, and house interactions of each solution technique",
+            "component": "HighlightImage",
+            "flexDirection": "row"
+        },
+        {
+            "text": "State navigation buttons allow you to go forward, backward, or auto-play through solutions",
+            "component": "ButtonTray",
+            "flexDirection": "column"
+        },
+        {
+            "text": "Responsive design for both mobile and desktop",
+            "component": "ResponsiveSudokoo",
+            "flexDirection": "column"
+        }
+    ],
     "learned": [
-        "How to use React's <b>Contexts</b> to globally update an app's color and layout",
-        "How to use React's <b>BrowserRouter</b> and <b>HashRouter</b> to handle stateful urls in a single-page app",
-        "How to implement a <b>Full-Stack</b> web app using <b>MongoDB</b> and <b>Express.js</b>"
+        "How to <b>design</b>, <b>plan</b>, and <b>build</b> a React app as a <b>solo developer</b>",
+        "How to manage complex <b>component state</b> using <b>React hooks</b> such as <b>useState</b>",
+        "How to train a <b>crow</b> to solve my <b>sudoku</b> for me"
     ]
 }

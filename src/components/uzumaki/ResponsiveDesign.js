@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ResponsiveExample } from "./dependencies";
+import { ResponsiveExample } from "../common";
 import { ThemeContext, styles, units, LayoutContext } from "../../context";
 import mobileD from "../../assets/photos/recipes/responsive_mobile_dark.jpg";
 import tabletD from "../../assets/photos/recipes/responsive_tablet_dark.jpg";
@@ -29,7 +29,7 @@ export const ResponsiveDesign = (props) => {
               : "35%"
           } // "7rem"
         />
-        <ResponsiveExample
+        {/* <ResponsiveExample
           src={theme.isDark ? tabletD : tabletL}
           text="Tablet"
           width={
@@ -37,7 +37,7 @@ export const ResponsiveDesign = (props) => {
               ? `calc(0.24 * ${layout.width.ingredients})`
               : "60%"
           } // "24%" // "9rem"
-        />
+        /> */}
         <ResponsiveExample
           src={theme.isDark ? desktopD : desktopL}
           text="Desktop"

@@ -4,14 +4,34 @@
     "url": "uzumaki",
     "desc": "",
     "goals": [
-        "Create a <b>simple</b>, <b>focused</b> recipe site without the clutter of ads and blog content",
-        "Prioritize <b>accessibility</b> and <b>visual clarity</b> while maintaining a <b>colorful</b> palette",
-        "Provide <b>useful tools</b> that make you <b>want</b> to get your kitchen dirty"
+        "<b>Experiment</b> with and <b>learn</b> the <b>p5.js</b> animation library",
+        "Showcase the natural beauty of <b>polar functions</b> through <b>interaction</b> and <b>play</b>",
+        "Recreate the <b>experience</b> of marbles <b>spiraling down</b> a funnel"
     ],
-    "features": [],
+    "features": [
+        {
+            "text": "Spawn marbles and watch them spiral around",
+            "component": "SpawnImage",
+            "flexDirection": "row"
+        },
+        {
+            "text": "Turn on tracing to draw beautiful patterns",
+            "component": "TraceImage",
+            "flexDirection": "row-reverse"
+        },
+        {
+            "text": "Warp time to change speed and direction",
+            "component": "WarpImage",
+            "flexDirection": "row"
+        },
+        {
+            "text": "Experiment and witness your own hypnotizing creations",
+            "component": "WitnessImage",
+            "flexDirection": "column"
+        }],
     "learned": [
-        "How to use React's <b>Contexts</b> to globally update an app's color and layout",
-        "How to use React's <b>BrowserRouter</b> and <b>HashRouter</b> to handle stateful urls in a single-page app",
-        "How to implement a <b>Full-Stack</b> web app using <b>MongoDB</b> and <b>Express.js</b>"
+        "How to integrate <b>JavaScript libraries</b> like <b>p5.js</b> into my projects",
+        "How to simulate <b>3D space</b> in <b>2D</b> using <b>orthographic projection</b>",
+        "How to design <b>interactive</b> animations that <b>mesmerize</b> and <b>pull you in</b>"
     ]
 }

@@ -22,8 +22,8 @@ export const AccessibleButton = (props) => {
         }}
       >
         <IconButton
-          title={"Hover Me!"}
-          label={"Hover Me!"}
+          title={layout.name === "mobile" ? "Tap me!" : "Hover me!"}
+          label={layout.name === "mobile" ? "Tap me!" : "Hover me!"}
           color={theme.accent2}
           isToggle
           isCentered

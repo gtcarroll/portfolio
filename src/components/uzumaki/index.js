@@ -1,3 +1,4 @@
 import { UzumakiHeader } from "./UzumakiHeader";
+import { ResponsiveDesign } from "./ResponsiveDesign";
 
-export { UzumakiHeader };
+export { UzumakiHeader, ResponsiveDesign };

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { MenuHeader } from "./MenuHeader";
-import { ThemeContext, styles, units } from "../../../context";
+import { LabelHeader } from "./LabelHeader";
+import { ThemeContext, styles, units } from "../../context";
 
 export const ResponsiveExample = (props) => {
   const { theme } = useContext(ThemeContext);
@@ -11,7 +11,7 @@ export const ResponsiveExample = (props) => {
         width: props.width,
       }}
     >
-      <MenuHeader text={props.text} isFullWidth isBorderless />
+      <LabelHeader text={props.text} isFullWidth isBorderless />
       <ImageDiv
         style={{
           backgroundImage: `url(${props.src})`,
