@@ -9,6 +9,7 @@ export const ResponsiveExample = (props) => {
     <ColDiv
       style={{
         width: props.width,
+        height: props.height,
       }}
     >
       <LabelHeader text={props.text} isFullWidth isBorderless />
@@ -21,6 +22,11 @@ export const ResponsiveExample = (props) => {
       />
     </ColDiv>
   );
+};
+
+ResponsiveExample.defaultProps = {
+  width: "15rem",
+  height: "15rem",
 };
 
 const ColDiv = styled.div`

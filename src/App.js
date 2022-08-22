@@ -149,15 +149,33 @@ export const App = () => {
       ResponsiveDesign: { tag: ResponsiveDesign, props: {} },
       SpawnImage: {
         tag: ImageExample,
-        props: { project: "uzumaki", img: "spawn", isDark: theme.isDark },
+        props: {
+          project: "uzumaki",
+          img: "spawn",
+          isDark: theme.isDark,
+          isWide: true,
+          backgroundPosition: "bottom",
+        },
       },
       TraceImage: {
         tag: ImageExample,
-        props: { project: "uzumaki", img: "trace", isDark: theme.isDark },
+        props: {
+          project: "uzumaki",
+          img: "trace",
+          isDark: theme.isDark,
+          isWide: true,
+          backgroundPosition: "bottom",
+        },
       },
       WarpImage: {
         tag: ImageExample,
-        props: { project: "uzumaki", img: "warp", isDark: theme.isDark },
+        props: {
+          project: "uzumaki",
+          img: "warp",
+          isDark: theme.isDark,
+          isWide: true,
+          backgroundPosition: "center",
+        },
       },
       WitnessImage: {
         tag: ImageExample,
@@ -166,6 +184,7 @@ export const App = () => {
           img: "witness",
           isDark: theme.isDark,
           isWide: true,
+          backgroundPosition: "bottom",
         },
       },
     },

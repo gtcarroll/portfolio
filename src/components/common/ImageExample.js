@@ -21,6 +21,7 @@ export const ImageExample = (props) => {
         boxShadow: styles.boxShadow.card,
         borderColor: theme.primaryLight,
         marginTop: isMobile ? null : `calc(${units.rem2} + 3px)`,
+        backgroundPosition: props.backgroundPosition,
       }}
     />
   );

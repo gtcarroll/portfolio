@@ -7,7 +7,7 @@ import desktop from "../../assets/photos/sudokoo/responsive_desktop.jpg";
 
 export const ResponsiveSudokoo = (props) => {
   const { layout } = useContext(LayoutContext);
-
+  let height = layout.name === "mobile" ? null : "20rem";
   return (
     <ResponsiveSudokooDiv
       style={{
@@ -15,11 +15,17 @@ export const ResponsiveSudokoo = (props) => {
       }}
     >
       <RowDiv>
-        <ResponsiveExample src={mobile} text="Mobile" width={"25%"} />
+        <ResponsiveExample
+          src={mobile}
+          text="Mobile"
+          width={"25%"}
+          height={height}
+        />
         <ResponsiveExample
           src={desktop}
           text="Desktop"
           width={"70%"}
+          height={height}
           isDesktop
         />
       </RowDiv>
