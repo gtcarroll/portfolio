@@ -74,6 +74,7 @@ const Overlay = styled.h1`
   // animation
   transition: ${styles.transition.body};
 
+  z-index: 10;
   // flexbox
   display: flex;
   align-items: center;

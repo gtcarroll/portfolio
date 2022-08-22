@@ -1,24 +1,45 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { styles } from "../../../context";
+import {
+  ThemeContext,
+  LayoutContext,
+  functions,
+  styles,
+  units,
+} from "../../../context";
 
 export const JellyButton = (props) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const { layout } = useContext(LayoutContext);
+  let transparentColor = functions.addAlpha(props.color, 0.3);
+  let isMobile = layout.name === "mobile";
   return (
     <ButtonContainer
-      style={{ flexGrow: props.flexGrow }}
-      className={props.padding}
+      tabIndex={props.disabled ? "-1" : "0"}
+      onClick={props.disabled ? null : props.onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+      onMouseDown={() => setIsActive(true)}
+      onMouseUp={() => setIsActive(false)}
+      style={{
+        flexGrow: props.isHidden ? 0 : props.isBig ? 2 : null,
+        marginLeft: !props.isHidden && props.isRight ? units.rem1 : null,
+        marginRight: !props.isHidden && props.isLeft ? units.rem1 : null,
+      }}
     >
       <Button
-        style={{ color: props.color, borderColor: props.color }}
-        className={
-          (props.disabled ? "disabled " : "") +
-          (props.solved ? "solved " : "") +
-          (props.failed ? "failed " : "") +
-          (props.hidden ? "hidden " : "") +
-          props.padding
-        }
-        onClick={props.disabled ? null : props.onClick}
-        tabIndex={props.disabled ? "-1" : "0"}
+        style={{
+          fontSize: layout.fontSize.body,
+          color: props.isHidden ? "transparent" : props.color,
+          borderColor: props.isHidden ? "transparent" : props.color,
+          backgroundColor: isHovered ? transparentColor : "transparent",
+          top: (isMobile || isHovered) && !isActive ? 0 : null,
+          borderWidth:
+            (isMobile || isHovered) && !isActive ? "2px 2px 9px 2px" : null,
+        }}
       >
         {props.text}
       </Button>
@@ -26,67 +47,46 @@ export const JellyButton = (props) => {
   );
 };
 
-JellyButton.defaultProps = {
-  onClick: null,
-  text: "",
-  color: "",
-  flexGrow: 0,
-  disabled: false,
-  solved: false,
-  hidden: false,
-  padding: "",
-};
+JellyButton.defaultProps = {};
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.button`
+  // animation
   transition: ${styles.transition.button};
-  position: relative;
+
+  // flexbox
   display: flex;
-  &.left {
-    padding-left: 1rem;
-  }
-  &.right {
-    padding-right: 1rem;
-  }
+  flex-grow: 1;
+
+  // position
+  position: relative;
+
+  // box model
+  height: calc(11px + ${units.rem4});
 `;
 
-const Button = styled.button`
-  transition: ${styles.transition.button};
+const Button = styled.div`
+  // animation
+  transition: 0.1s ease-out; // ${styles.transition.button};
 
-  font-size: 1.5rem;
-  padding: 0.4rem 0.4rem 0.8rem 0.4rem;
+  // position
+  top: 7px;
+  position: absolute;
+  box-sizing: border-box;
+
+  // box model
+  border-width: 2px;
+  border-style: solid;
   width: 100%;
+  padding: ${units.rem0};
+  padding-bottom: ${units.rem1};
+
+  // typography
   white-space: nowrap;
   overflow: hidden;
 
-  &.right,
-  &.left {
-    width: calc(100% - 1rem);
-  }
-
-  border: 2px solid;
-  border-radius: 2px;
-
-  top: 7px;
-  position: absolute;
-  box-shadow: 0 0 0 0;
-
-  background-color: transparent;
-
-  @media (orientation: portrait) {
-    &:not(.disabled) {
-      top: 0px;
-      box-shadow: 0 7px 0 0;
-    }
-  }
-
-  &.hidden {
-    border-color: transparent !important;
-    color: transparent !important;
-    flex-grow: 0;
-  }
-
-  &.solved,
-  &.failed {
-    padding: 0.5rem 0.4rem 0.7rem 0.4rem;
+  // psuedo-selectors
+  &:active {
+    top: 7px !important;
+    border-width: 2px !important;
   }
 `;
