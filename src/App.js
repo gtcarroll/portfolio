@@ -9,7 +9,7 @@ import {
   functions,
 } from "./context";
 import { Project } from "./components/project";
-import { ImageExample } from "./components/common";
+import { ImageExample, P5Canvas } from "./components/common";
 import {
   RecipesHeader,
   ThemeButtons,
@@ -43,13 +43,13 @@ export const App = () => {
     let isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     document.documentElement.style.setProperty(
       "--root-background-color",
-      isDark ? themes.dark.background : themes.light.background
+      isDark ? themes.dark.default.background : themes.light.default.background
     );
     document.documentElement.style.setProperty(
       "--root-scrollbar-color",
       isDark
-        ? themes.dark.scrollbar + " " + themes.dark.background
-        : themes.light.scrollbar + " " + themes.light.background
+        ? themes.dark.default.scrollbar + " " + themes.dark.default.background
+        : themes.light.default.scrollbar + " " + themes.light.default.background
     );
   }, []);
 
@@ -97,10 +97,7 @@ export const App = () => {
   );
   const components = {
     recipes: {
-      Header: {
-        tag: RecipesHeader,
-        props: {},
-      },
+      Header: { tag: UzumakiHeader, props: {} },
       IngredientList: {
         tag: IngredientList,
         props: {
@@ -128,7 +125,7 @@ export const App = () => {
       ColorContrast: { tag: ColorContrast, props: {} },
     },
     sudokoo: {
-      Header: { tag: SudokooHeader, props: {} },
+      Header: { tag: UzumakiHeader, props: {} },
       ResponsiveSudokoo: { tag: ResponsiveSudokoo, props: {} },
       ButtonTray: { tag: ButtonTray, props: {} },
       CrowImage: {
@@ -218,6 +215,7 @@ export const App = () => {
           setLayout,
         }}
       >
+        <P5Canvas />
         <AppDiv
           style={{
             color: theme.foreground,

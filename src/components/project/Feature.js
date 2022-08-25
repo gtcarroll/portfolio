@@ -13,10 +13,10 @@ export const Feature = (props) => {
   return (
     <FeatureDiv
       style={{
-        borderColor: props.isBorderless ? "transparent" : theme.primaryLight,
         flexDirection: props.flexDirection,
         flexWrap: layout.name === "mobile" ? "wrap" : "nowrap",
         maxWidth: layout.width.ingredients,
+        borderColor: theme.scrollbar,
       }}
     >
       <Text>{props.text}</Text>

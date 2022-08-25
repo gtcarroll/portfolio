@@ -26,9 +26,7 @@ export const UnitsTray = (props) => {
         title={item.value}
         color={gradient[i]}
         isActive={isActiveUnit}
-        icon={
-          <item.icon fill={isActiveUnit ? theme.background : gradient[i]} />
-        }
+        icon={item.icon}
         onClick={() => {
           setActive(i);
           props.setUnits(item.value);

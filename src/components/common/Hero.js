@@ -2,11 +2,10 @@ import React, { useContext, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import {
   ThemeContext,
-  themes,
   LayoutContext,
   units,
   styles,
-  useThemeChange,
+  functions,
 } from "../../context";
 
 export const Hero = (props) => {
@@ -28,21 +27,24 @@ export const Hero = (props) => {
             backgroundImage: `url(${image})`,
             height: layout.height.hero,
             maxWidth: units.pxImg,
-            borderColor: theme.primaryLight,
           }}
           draggable="false"
         />
-        <FigCaption
+        <Underlay
           style={{
-            backgroundColor: isHovered
-              ? theme.primaryLight
-              : theme.overlaySolid,
-            color: theme.primary,
-            fontSize: layout.fontSize.body,
+            backgroundColor: theme.background,
           }}
         >
-          go to {props.project + " "} <UnicodeSpan>→</UnicodeSpan>
-        </FigCaption>
+          <FigCaption
+            style={{
+              backgroundColor: isHovered ? theme.hover : theme.overlay,
+              color: theme.primary,
+              fontSize: layout.fontSize.body,
+            }}
+          >
+            go to {props.project + " "} <UnicodeSpan>→</UnicodeSpan>
+          </FigCaption>
+        </Underlay>
       </Fig>
     </Link>
   );
@@ -67,6 +69,16 @@ const Link = styled.a`
   // typography
   text-decoration: none;
 `;
+const Underlay = styled.div`
+  // box model
+  margin: 0 auto;
+  margin-top: calc(-${units.rem5} / 2);
+  border-radius: ${styles.borderRadius.button};
+  width: min-content;
+  min-height: calc(${units.rem5} / 2);
+
+  box-shadow: ${styles.boxShadow.card};
+`;
 const Fig = styled.figure`
   // box model
   width: 100%;
@@ -76,31 +88,15 @@ const FigCaption = styled.figcaption`
   // animation
   transition: ${styles.transition.button};
 
-  // flexbox
-  display: flex;
-  align-content: center;
-  justify-content: center;
-
   // box model
-  width: 100%;
+  padding: ${units.rem1} ${units.rem2};
   border-radius: ${styles.borderRadius.button};
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  padding-bottom: ${units.rem0};
+  /* width: 100%; */
+  /* height: 100%; */
 
   // typography
   text-align: center;
   white-space: nowrap;
-
-  // box model
-  padding: ${units.rem1} ${units.rem2};
-  margin: 0 auto;
-  margin-top: calc(-${units.rem5} / 2);
-  border-radius: ${styles.borderRadius.button};
-  width: min-content;
-  min-height: calc(${units.rem5} / 2);
-
-  box-shadow: ${styles.boxShadow.card};
 `;
 const UnicodeSpan = styled.span`
   // typography
@@ -115,10 +111,7 @@ const HeroImg = styled.div`
   // box model
   width: 100%;
   max-width: ${units.pxImg};
-  border: ${styles.border.button};
   border-radius: ${styles.borderRadius.button};
-  /* border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0; */
   box-sizing: border-box;
   box-shadow: ${styles.boxShadow.card};
 

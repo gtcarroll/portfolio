@@ -19,7 +19,6 @@ export const ImageExample = (props) => {
             ? `calc(6 * ${layout.height.hero} / 5)`
             : null,
         boxShadow: styles.boxShadow.card,
-        borderColor: theme.primaryLight,
         marginTop: isMobile ? null : `calc(${units.rem2} + 3px)`,
         backgroundPosition: props.backgroundPosition,
       }}
@@ -35,7 +34,6 @@ const ImageDiv = styled.div`
   width: 100%;
   /* height: 15rem; */
   max-width: ${units.pxImg};
-  border: ${styles.border.button};
   border-radius: ${styles.borderRadius.button};
   box-sizing: border-box;
 

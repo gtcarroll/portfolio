@@ -12,7 +12,6 @@ export const IconButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const { layout } = useContext(LayoutContext);
   const { theme } = useContext(ThemeContext);
-  let transparentColor = functions.addAlpha(props.color, 0.3);
   return (
     <IconButtonDiv
       tabIndex={props.tabIndex}
@@ -35,11 +34,17 @@ export const IconButton = (props) => {
           backgroundColor: props.isActive
             ? props.color
             : isHovered
-            ? transparentColor
+            ? theme.hover
             : "transparent",
         }}
       >
-        {props.icon && <Icon>{props.icon}</Icon>}
+        {props.icon && (
+          <Icon>
+            <props.icon
+              fill={props.isActive ? theme.background : props.color}
+            />
+          </Icon>
+        )}
         {props.label && <Label>{props.label}</Label>}
       </DisplayDiv>
     </IconButtonDiv>

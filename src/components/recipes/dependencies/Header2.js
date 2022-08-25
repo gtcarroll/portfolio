@@ -27,7 +27,7 @@ Header2.defaultProps = {
 
 const Header2Div = styled.h2`
   // animation
-  transition: ${styles.transition.bodyALL};
+  transition: ${styles.transition.body};
 
   // flexbox
   display: flex;

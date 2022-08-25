@@ -51,11 +51,7 @@ export const ThemeButtons = (props) => {
         key={i}
         title={item.label}
         color={themesGradient[i]}
-        icon={
-          <item.icon
-            fill={isActiveTheme ? theme.background : themesGradient[i]}
-          />
-        }
+        icon={item.icon}
         isCentered
         isActive={isActiveTheme}
         onClick={() => {

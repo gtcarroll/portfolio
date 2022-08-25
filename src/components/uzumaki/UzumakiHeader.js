@@ -71,6 +71,6 @@ const UzumakiHeaderDiv = styled.h1`
   z-index: 10;
 
   // typography
-  font-family: ${styles.fontFamily.monospace};
+  /* font-family: ${styles.fontFamily.monospace}; */
   text-align: center;
 `;

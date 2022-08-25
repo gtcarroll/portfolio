@@ -17,7 +17,6 @@ export const ResponsiveExample = (props) => {
         style={{
           backgroundImage: `url(${props.src})`,
           boxShadow: styles.boxShadow.card,
-          borderColor: theme.primaryLight,
         }}
       />
     </ColDiv>
@@ -51,7 +50,6 @@ const ImageDiv = styled.div`
   width: 100%;
   height: 100%;
   max-width: ${units.pxImg};
-  border: ${styles.border.button};
   border-radius: ${styles.borderRadius.button};
   box-sizing: border-box;
 

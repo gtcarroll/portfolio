@@ -28,7 +28,7 @@ export const Header1 = (props) => {
     <Header1Div
       style={{
         color: theme.accent2,
-        backgroundColor: theme.overlaySolid,
+        backgroundColor: theme.overlay,
         fontSize: layout.fontSize.h1,
         maxWidth: layout.width.header,
       }}

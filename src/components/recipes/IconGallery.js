@@ -56,11 +56,7 @@ export const IconGallery = (props) => {
           key={i}
           title={item.label}
           color={gradient[i]}
-          icon={
-            <item.icon
-              fill={activeButtons[item.value] ? theme.background : gradient[i]}
-            />
-          }
+          icon={item.icon}
           isActive={activeButtons[item.value]}
           isToggle
           isCentered
