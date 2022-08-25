@@ -1,7 +1,7 @@
 import { useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 import p5 from "p5";
-import { pallete, ThemeContext, styles, useThemeChange } from "../../context";
+import { pallete, ThemeContext, styles, LayoutContext } from "../../context";
 
 const t = {
   g1: 0,
@@ -19,7 +19,7 @@ const spring = {
   mass: 3,
 };
 const frames = {
-  max: 270,
+  max: 240,
   letter: 120,
   offset: 20,
 };
@@ -30,7 +30,7 @@ const width = {
 let colors;
 let frame = 0;
 let resize = 0;
-let reachedMax = false;
+let reverse = false;
 
 function springPercent(t) {
   const d = spring.damping * 3 * Math.sqrt(spring.stiffness * spring.mass);
@@ -48,8 +48,8 @@ function springPercent(t) {
 }
 
 export const P5Canvas = (props) => {
-  const containerRef = useThemeChange("default", 0.2);
   const { theme } = useContext(ThemeContext);
+  const { layout } = useContext(LayoutContext);
   let isDark = theme.isDark ? "dark" : "light";
 
   function sketch(p) {
@@ -68,7 +68,7 @@ export const P5Canvas = (props) => {
     };
 
     p.draw = function () {
-      if (frame < frames.max) {
+      if (frame < frames.max || frame >= 0) {
         // update timing values
         t.g1 = springPercent(frame / frames.letter);
         t.g2 = springPercent(
@@ -104,7 +104,18 @@ export const P5Canvas = (props) => {
         drawA(width.unit * 4 + xOffset, width.unit * 2, width.letter, t.a);
       }
 
-      frame++;
+      if (reverse) {
+        frame--;
+      } else {
+        frame++;
+      }
+
+      if (frame >= frames.max) {
+        reverse = !reverse;
+      } else if (frame === 0) {
+        reverse = !reverse;
+      }
+
       resize++;
     };
 
@@ -173,10 +184,8 @@ export const P5Canvas = (props) => {
         y: y + w + w * (1 - p1),
         h: w,
       };
-      // const yMax = Math.max(y + w, tri.y);
       let yMax = tri.y;
-      if (tri.y < y + w || reachedMax) {
-        reachedMax = true;
+      if (tri.y < y + w || frame - frames.offset >= frames.letter / 4) {
         yMax = y + w;
       }
 
@@ -249,10 +258,9 @@ export const P5Canvas = (props) => {
     <HeaderContainer
       style={{
         width: "100%",
-        height: "800px",
+        height: `calc(2.5 * ${layout.height.hero})`,
         backgroundColor: theme.background,
       }}
-      ref={containerRef}
     >
       <P5Container ref={p5ContainerRef} />
     </HeaderContainer>

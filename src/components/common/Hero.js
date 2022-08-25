@@ -71,6 +71,9 @@ const Link = styled.a`
   text-decoration: none;
 `;
 const Underlay = styled.div`
+  // animation
+  transition: ${styles.transition.body};
+
   // box model
   margin: 0 auto;
   margin-top: calc(-${units.rem5} / 2);
@@ -87,7 +90,7 @@ const Fig = styled.figure`
 `;
 const FigCaption = styled.figcaption`
   // animation
-  transition: ${styles.transition.button};
+  transition: ${styles.transition.body};
 
   // box model
   padding: ${units.rem1} ${units.rem2};

@@ -6,9 +6,10 @@ export const pallete = {
     "rgb(152, 224, 255)", // #98e0ff
   ],
   light: [
-    "rgb(255, 161, 152)", // #ffa198
-    "rgb(152, 224, 255)", // #98e0ff
-    "rgb(255, 241, 152)", // #fff198
+    "rgb(2, 43, 58)", // # sienna
+    "rgb(112, 79, 156)", // #73628a
+    "rgb(33, 129, 151)", // # green
+    "rgb(84, 131, 151)", // # green
   ],
 };
 export const themes = {

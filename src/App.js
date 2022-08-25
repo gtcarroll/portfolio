@@ -122,7 +122,7 @@ export const App = () => {
       AccessibleButton: { tag: AccessibleButton, props: {} },
       ResponsiveRecipes: { tag: ResponsiveRecipes, props: {} },
       IconGallery: { tag: IconGallery, props: {} },
-      ColorContrast: { tag: ColorContrast, props: {} },
+      // ColorContrast: { tag: ColorContrast, props: {} },
     },
     sudokoo: {
       Header: { tag: UzumakiHeader, props: {} },

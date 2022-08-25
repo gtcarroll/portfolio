@@ -38,11 +38,6 @@
             "text": "Highly responsive page layout designed for any device",
             "component": "ResponsiveRecipes",
             "flexDirection": "column"
-        },
-        {
-            "text": "An entire spectrum of colors, all adhering to the WCAG's text and graphics contrast requirements",
-            "component": "ColorContrast",
-            "flexDirection": "row-reverse"
         }
     ],
     "learned": [
