@@ -63,8 +63,8 @@ export const P5Canvas = (props) => {
     p.setup = function () {
       colors = {
         bg: p.color(pallete[isDark][0]),
-        fg1: p.color(pallete[isDark][1]),
-        fg2: p.color(pallete[isDark][2]),
+        fg1: p.color(pallete["light"][1]),
+        fg2: p.color(pallete["light"][2]),
       };
       updateWidth();
 
@@ -262,7 +262,7 @@ export const P5Canvas = (props) => {
       <Header
         style={{
           fontSize: layout.fontSize.h1,
-          color: pallete[isDark][1],
+          color: pallete["light"][1],
           maxWidth: layout.width.ingredients,
         }}
       >
@@ -283,7 +283,7 @@ export const P5Canvas = (props) => {
       <Header2
         style={{
           fontSize: layout.fontSize.h2,
-          color: pallete[isDark][2],
+          color: pallete["light"][2],
           maxWidth: `calc(${layout.width.ingredients} / 2)`,
         }}
       >
@@ -298,15 +298,15 @@ export const P5Canvas = (props) => {
       <RowDiv
         style={{
           fontSize: layout.fontSize.h3,
-          color: pallete[isDark][1],
+          color: pallete["light"][1],
           maxWidth: layout.width.ingredients,
         }}
       >
         <IconButton
           title={"recipes"}
           label={"recipes"}
-          color={pallete[isDark][1]}
-          textColor={pallete[isDark][1]}
+          color={pallete["light"][1]}
+          textColor={pallete["light"][1]}
           isToggle
           isCentered
           isActive={false}
@@ -318,7 +318,7 @@ export const P5Canvas = (props) => {
         />
         <div
           style={{
-            color: pallete[isDark][2],
+            color: pallete["light"][2],
           }}
         >
           -
@@ -326,8 +326,8 @@ export const P5Canvas = (props) => {
         <IconButton
           title={"sudokoo"}
           label={"sudokoo"}
-          color={pallete[isDark][1]}
-          textColor={pallete[isDark][1]}
+          color={pallete["light"][1]}
+          textColor={pallete["light"][1]}
           isToggle
           isCentered
           isActive={false}
@@ -339,7 +339,7 @@ export const P5Canvas = (props) => {
         />
         <div
           style={{
-            color: pallete[isDark][2],
+            color: pallete["light"][2],
           }}
         >
           -
@@ -347,8 +347,8 @@ export const P5Canvas = (props) => {
         <IconButton
           title={"uzumaki"}
           label={"uzumaki"}
-          color={pallete[isDark][1]}
-          textColor={pallete[isDark][1]}
+          color={pallete["light"][1]}
+          textColor={pallete["light"][1]}
           isToggle
           isCentered
           isActive={false}
