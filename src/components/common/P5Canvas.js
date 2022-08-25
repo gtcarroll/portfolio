@@ -405,9 +405,6 @@ const Header = styled.h1`
 `;
 
 const Header2 = styled.h2`
-  // animation
-  /* animation: fadeIn 6s; */
-
   // flexbox
   display: flex;
   justify-content: space-around;

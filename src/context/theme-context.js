@@ -72,7 +72,7 @@ export const themes = {
 
       foreground: "rgb(255, 255, 255)", // #fff
       background: pallete.dark[0],
-      overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
+      overlay: "rgba(9, 14, 27, 0.2)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
@@ -85,7 +85,7 @@ export const themes = {
 
       foreground: "rgb(255, 255, 255)", // #fff
       background: pallete.dark[0],
-      overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
+      overlay: "rgba(9, 14, 27, 0.2)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
@@ -98,7 +98,7 @@ export const themes = {
 
       foreground: "rgb(255, 255, 255)", // #fff
       background: pallete.dark[1],
-      overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
+      overlay: "rgba(9, 14, 27, 0.2)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
@@ -111,7 +111,7 @@ export const themes = {
 
       foreground: "rgb(255, 255, 255)", // #fff
       background: pallete.dark[2],
-      overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
+      overlay: "rgba(9, 14, 27, 0.2)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
