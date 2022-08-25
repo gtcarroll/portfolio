@@ -13,6 +13,7 @@ export const NumberButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const { theme } = useContext(ThemeContext);
   const { layout } = useContext(LayoutContext);
+  let transparentColor = functions.addAlpha(props.color, 0.3);
   return (
     <MultiplierButtonDiv
       onClick={() => {
@@ -30,7 +31,7 @@ export const NumberButton = (props) => {
           backgroundColor: props.isActive
             ? props.color
             : isHovered
-            ? theme.hover
+            ? transparentColor
             : "transparent",
           opacity: props.isActive || isHovered ? 1 : 1, //styles.transparency.underline,
         }}

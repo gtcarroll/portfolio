@@ -1,8 +1,15 @@
 import { createContext } from "react";
-export const colors = {
-  pop1: "rgb(255, 161, 152)", // #ffa198
-  pop2: "rgb(152, 224, 255)", // #98e0ff
-  pop3: "rgb(255, 241, 152)", // #fff198
+export const pallete = {
+  dark: [
+    "rgb(255, 241, 152)", // #fff198
+    "rgb(255, 161, 152)", // #ffa198
+    "rgb(152, 224, 255)", // #98e0ff
+  ],
+  light: [
+    "rgb(255, 161, 152)", // #ffa198
+    "rgb(152, 224, 255)", // #98e0ff
+    "rgb(255, 241, 152)", // #fff198
+  ],
 };
 export const themes = {
   dark: {
@@ -10,9 +17,8 @@ export const themes = {
       isDark: true,
 
       foreground: "rgb(0, 0, 0)", // #000
-      background: colors.pop3,
+      background: pallete.dark[0],
       overlay: "rgba(242, 238, 232, 0.2)", // #f2eee8
-      hover: "rgba(242, 238, 232, 0.4)", // #f2eee8
       scrollbar: "rgba(0, 0, 0, 0.3)", // #000
 
       accent1: "rgb(0, 0, 0)", // #000
@@ -24,9 +30,8 @@ export const themes = {
       isDark: true,
 
       foreground: "rgb(0, 0, 0)", // #000
-      background: colors.pop1,
+      background: pallete.dark[0],
       overlay: "rgba(242, 238, 232, 0.2)", // #f2eee8
-      hover: "rgba(242, 238, 232, 0.4)", // #f2eee8
       scrollbar: "rgba(0, 0, 0, 0.3)", // #000
 
       accent1: "rgb(0, 0, 0)", // #000
@@ -38,9 +43,8 @@ export const themes = {
       isDark: true,
 
       foreground: "rgb(0, 0, 0)", // #000
-      background: colors.pop2,
+      background: pallete.dark[2],
       overlay: "rgba(242, 238, 232, 0.2)", // #f2eee8
-      hover: "rgba(242, 238, 232, 0.4)", // #f2eee8
       scrollbar: "rgba(0, 0, 0, 0.3)", // #000
 
       accent1: "rgb(0, 0, 0)", // #000
@@ -52,9 +56,8 @@ export const themes = {
       isDark: true,
 
       foreground: "rgb(0, 0, 0)", // #000
-      background: colors.pop3,
+      background: pallete.dark[1],
       overlay: "rgba(242, 238, 232, 0.2)", // #f2eee8
-      hover: "rgba(242, 238, 232, 0.4)", // #f2eee8
       scrollbar: "rgba(0, 0, 0, 0.3)", // #000
 
       accent1: "rgb(0, 0, 0)", // #000
@@ -68,9 +71,8 @@ export const themes = {
       isDark: false,
 
       foreground: "rgb(255, 255, 255)", // #fff
-      background: colors.pop3,
+      background: pallete.light[0],
       overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
-      hover: "rgba(9, 14, 27, 0.1)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
@@ -82,9 +84,8 @@ export const themes = {
       isDark: false,
 
       foreground: "rgb(255, 255, 255)", // #fff
-      background: colors.pop1,
+      background: pallete.light[0],
       overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
-      hover: "rgba(9, 14, 27, 0.1)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
@@ -96,9 +97,8 @@ export const themes = {
       isDark: false,
 
       foreground: "rgb(255, 255, 255)", // #fff
-      background: colors.pop2,
+      background: pallete.light[2],
       overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
-      hover: "rgba(9, 14, 27, 0.1)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff
@@ -110,9 +110,8 @@ export const themes = {
       isDark: false,
 
       foreground: "rgb(255, 255, 255)", // #fff
-      background: colors.pop3,
+      background: pallete.light[1],
       overlay: "rgba(9, 14, 27, 0.05)", // #090e1b
-      hover: "rgba(9, 14, 27, 0.1)", // #090e1b
       scrollbar: "rgba(255, 255, 255, 0.3)", // #fff
 
       accent1: "rgb(255, 255, 255)", // #fff

@@ -14,6 +14,7 @@ export const JellyButton = (props) => {
   const { layout } = useContext(LayoutContext);
   const { theme } = useContext(ThemeContext);
   let isMobile = layout.name === "mobile";
+  let transparentColor = functions.addAlpha(props.color, 0.3);
   return (
     <ButtonContainer
       tabIndex={props.disabled ? "-1" : "0"}
@@ -35,7 +36,7 @@ export const JellyButton = (props) => {
           fontSize: layout.fontSize.body,
           color: props.isHidden ? "transparent" : props.color,
           borderColor: props.isHidden ? "transparent" : props.color,
-          backgroundColor: isHovered ? theme.hover : "transparent",
+          backgroundColor: isHovered ? transparentColor : "transparent",
           top: (isMobile || isHovered) && !isActive ? 0 : null,
           borderWidth:
             (isMobile || isHovered) && !isActive ? "2px 2px 9px 2px" : null,

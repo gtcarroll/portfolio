@@ -12,6 +12,7 @@ export const NumberInput = (props) => {
   const [isHovered, setIsHovered] = useState(false);
   const { theme } = useContext(ThemeContext);
   const { layout } = useContext(LayoutContext);
+  let transparentColor = functions.addAlpha(props.color, 0.3);
   return (
     <DisplayDiv>
       <NumberInputDiv
@@ -24,7 +25,7 @@ export const NumberInput = (props) => {
           backgroundColor: props.isActive
             ? props.color
             : isHovered
-            ? theme.hover
+            ? transparentColor
             : "transparent",
         }}
         onChange={(event) => {

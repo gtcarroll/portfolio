@@ -13,6 +13,7 @@ export const Hero = (props) => {
   const { layout } = useContext(LayoutContext);
   const { theme } = useContext(ThemeContext);
   const image = require(`../../assets/photos/${props.project}/${props.img}.jpg`);
+  let transparentPrimary = functions.addAlpha(theme.primary, 0.3);
   return (
     <Link
       href={"https://gtcarroll.github.io/" + props.project}
@@ -37,7 +38,7 @@ export const Hero = (props) => {
         >
           <FigCaption
             style={{
-              backgroundColor: isHovered ? theme.hover : theme.overlay,
+              backgroundColor: isHovered ? transparentPrimary : theme.overlay,
               color: theme.primary,
               fontSize: layout.fontSize.body,
             }}

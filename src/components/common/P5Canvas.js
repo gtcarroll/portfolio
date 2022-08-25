@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 import p5 from "p5";
+import { pallete, ThemeContext, styles, useThemeChange } from "../../context";
 
 const t = {
   g1: 0,
@@ -28,8 +29,8 @@ const width = {
 };
 let colors;
 let frame = 0;
+let resize = 0;
 let reachedMax = false;
-let resized = 0;
 
 function springPercent(t) {
   const d = spring.damping * 3 * Math.sqrt(spring.stiffness * spring.mass);
@@ -46,178 +47,191 @@ function springPercent(t) {
   return 1 - y * 10;
 }
 
-function sketch(p) {
-  // p is a reference to the p5 instance this sketch is attached to
-  p.setup = function () {
-    colors = {
-      bg: p.color(255, 241, 152),
-      fg1: p.color(255, 161, 152),
-      fg2: p.color(152, 224, 255),
+export const P5Canvas = (props) => {
+  const containerRef = useThemeChange("default", 0.2);
+  const { theme } = useContext(ThemeContext);
+  let isDark = theme.isDark ? "dark" : "light";
+
+  function sketch(p) {
+    // p is a reference to the p5 instance this sketch is attached to
+    p.setup = function () {
+      colors = {
+        bg: p.color(pallete[isDark][0]),
+        fg1: p.color(pallete[isDark][1]),
+        fg2: p.color(pallete[isDark][2]),
+      };
+      updateWidth();
+
+      p.noStroke();
+      p.ellipseMode(p.CORNER);
+      p.createCanvas(width.unit * 14, width.unit * 8);
     };
-    width.unit = 50;
-    if (window.innerWidth < width.unit * 14) {
-      width.unit = window.innerWidth / 14;
-    }
-    width.letter = width.unit * 3;
 
-    p.noStroke();
-    p.ellipseMode(p.CORNER);
-    p.createCanvas(width.unit * 14, width.unit * 8);
-  };
+    p.draw = function () {
+      if (frame < frames.max) {
+        // update timing values
+        t.g1 = springPercent(frame / frames.letter);
+        t.g2 = springPercent(
+          Math.max(0, (frame - frames.offset / 2) / frames.letter)
+        );
+        t.a = springPercent(
+          Math.max(0, (frame - frames.offset) / frames.letter)
+        );
+        t.b1 = springPercent(
+          Math.max(0, (frame - 2 * frames.offset) / frames.letter)
+        );
+        t.b2 = springPercent(
+          Math.max(0, (frame - (5 * frames.offset) / 2) / frames.letter)
+        );
+        t.e = springPercent(
+          Math.max(0, (frame - 3 * frames.offset) / frames.letter)
+        );
+      }
 
-  p.draw = function () {
-    if (frame < frames.max || resized < 30) {
-      // update timing values
-      t.g1 = springPercent(frame / frames.letter);
-      t.g2 = springPercent(
-        Math.max(0, (frame - frames.offset / 2) / frames.letter)
-      );
-      t.a = springPercent(Math.max(0, (frame - frames.offset) / frames.letter));
-      t.b1 = springPercent(
-        Math.max(0, (frame - 2 * frames.offset) / frames.letter)
-      );
-      t.b2 = springPercent(
-        Math.max(0, (frame - (5 * frames.offset) / 2) / frames.letter)
-      );
-      t.e = springPercent(
-        Math.max(0, (frame - 3 * frames.offset) / frames.letter)
-      );
-
-      // draw letters
-      p.background(colors.bg);
-      let xOffset = width.letter / 5;
-      drawG(width.unit + xOffset, width.unit * 2, width.letter, t.g1, t.g2);
-      drawB(width.unit * 7 + xOffset, width.unit * 2, width.letter, t.b1, t.b2);
-      drawE(width.unit * 10 + xOffset, width.unit * 2, width.letter, t.e);
-      drawA(width.unit * 4 + xOffset, width.unit * 2, width.letter, t.a);
+      if (frame < frames.max || resize < 30 || frame % 30 === 0) {
+        // draw letters
+        p.background(colors.bg);
+        let xOffset = width.letter / 5;
+        drawG(width.unit + xOffset, width.unit * 2, width.letter, t.g1, t.g2);
+        drawB(
+          width.unit * 7 + xOffset,
+          width.unit * 2,
+          width.letter,
+          t.b1,
+          t.b2
+        );
+        drawE(width.unit * 10 + xOffset, width.unit * 2, width.letter, t.e);
+        drawA(width.unit * 4 + xOffset, width.unit * 2, width.letter, t.a);
+      }
 
       frame++;
-      resized++;
-    }
-  };
-
-  p.windowResized = function () {
-    width.unit = 50;
-    if (window.innerWidth < width.unit * 14) {
-      width.unit = window.innerWidth / 14;
-    }
-    width.letter = width.unit * 3;
-
-    p.resizeCanvas(width.unit * 14, width.unit * 8);
-    resized = 0;
-  };
-
-  function drawG(x, y, w, p1, p2) {
-    // draw circle
-    let c = {
-      x: x + ((3 * w) / 5) * (1 - p2),
-      y: y + ((3 * w) / 5) * (1 - p2),
-      w: w,
+      resize++;
     };
-    p.fill(colors.fg2);
-    p.ellipse(c.x, c.y, c.w);
 
-    // draw mask
-    let mask = {
-      x: x + (5 * w) / 3,
-      y: y + (5 * w) / 3,
-      w: (6 * w) / 3,
+    p.windowResized = function () {
+      updateWidth();
+      p.resizeCanvas(width.unit * 14, width.unit * 8);
+      resize = 0;
     };
-    p.fill(colors.bg);
-    p.triangle(
-      mask.x,
-      mask.y,
-      mask.x - mask.w,
-      mask.y,
-      mask.x,
-      mask.y - mask.w
-    );
 
-    // draw triangle
-    let tri = {
-      x: x + (9 * w) / 10 - (w / 2) * (1 - p1),
-      y: y + w + (w / 2) * (1 - p1),
-      w: (2 * w) / 5,
-      fill: colors.fg1,
-    };
-    p.fill(tri.fill);
-    p.triangle(
-      tri.x,
-      tri.y,
-      tri.x,
-      tri.y - tri.w,
-      tri.x - tri.w,
-      tri.y - tri.w
-    );
-  }
-
-  function drawA(x, y, w, p1) {
-    // draw triangle
-    let tri = {
-      x: x + w / 10,
-      y: y + w + w * (1 - p1),
-      h: w,
-    };
-    // const yMax = Math.max(y + w, tri.y);
-    let yMax = tri.y;
-    if (tri.y < y + w || reachedMax) {
-      reachedMax = true;
-      yMax = y + w;
+    function updateWidth() {
+      width.unit = 50;
+      if (window.innerWidth < width.unit * 14) {
+        width.unit = window.innerWidth / 14;
+      }
+      width.letter = width.unit * 3;
     }
 
-    p.fill(colors.fg1);
-    p.triangle(
-      tri.x,
-      yMax,
-      tri.x + (4 * w) / 5,
-      yMax,
-      tri.x + (2 * w) / 5,
-      tri.y - tri.h
-    );
+    function drawG(x, y, w, p1, p2) {
+      // draw circle
+      let c = {
+        x: x + ((3 * w) / 5) * (1 - p2),
+        y: y + ((3 * w) / 5) * (1 - p2),
+        w: w,
+      };
+      p.fill(colors.fg2);
+      p.ellipse(c.x, c.y, c.w);
 
-    // draw mask
-    p.fill(colors.bg);
-    p.rect(x, y + w, w, tri.h);
+      // draw mask
+      let mask = {
+        x: x + (5 * w) / 3,
+        y: y + (5 * w) / 3,
+        w: (6 * w) / 3,
+      };
+      p.fill(colors.bg);
+      p.triangle(
+        mask.x,
+        mask.y,
+        mask.x - mask.w,
+        mask.y,
+        mask.x,
+        mask.y - mask.w
+      );
+
+      // draw triangle
+      let tri = {
+        x: x + (9 * w) / 10 - (w / 2) * (1 - p1),
+        y: y + w + (w / 2) * (1 - p1),
+        w: (2 * w) / 5,
+        fill: colors.fg1,
+      };
+      p.fill(tri.fill);
+      p.triangle(
+        tri.x,
+        tri.y,
+        tri.x,
+        tri.y - tri.w,
+        tri.x - tri.w,
+        tri.y - tri.w
+      );
+    }
+
+    function drawA(x, y, w, p1) {
+      // draw triangle
+      let tri = {
+        x: x + w / 10,
+        y: y + w + w * (1 - p1),
+        h: w,
+      };
+      // const yMax = Math.max(y + w, tri.y);
+      let yMax = tri.y;
+      if (tri.y < y + w || reachedMax) {
+        reachedMax = true;
+        yMax = y + w;
+      }
+
+      p.fill(colors.fg1);
+      p.triangle(
+        tri.x,
+        yMax,
+        tri.x + (4 * w) / 5,
+        yMax,
+        tri.x + (2 * w) / 5,
+        tri.y - tri.h
+      );
+
+      // draw mask
+      p.fill(colors.bg);
+      p.rect(x, y + w, w, tri.h);
+    }
+
+    function drawB(x, y, w, p1, p2) {
+      // draw top circle
+      let c1 = {
+        x: x - (w / 3) * (1 - p1),
+        y: y,
+        w: w / 2,
+      };
+      p.fill(colors.fg1);
+      p.ellipse(c1.x, c1.y, c1.w);
+
+      // draw bottom circle
+      let c2 = {
+        x: x - (w / 2) * (1 - p2),
+        y: y + w / 3,
+        w: (2 * w) / 3,
+      };
+      p.fill(colors.fg2);
+      p.ellipse(c2.x, c2.y, c2.w);
+
+      // draw mask
+      p.fill(colors.bg);
+      p.rect(x - w / 2, y, (2 * w) / 3, w);
+    }
+
+    function drawE(x, y, w, p1) {
+      // draw rect
+      let r = {
+        x: x + (3 * w) / 5,
+        y: y,
+        w: ((3 * w) / 5) * p1,
+        h: w,
+      };
+      p.fill(colors.fg1);
+      p.rect(r.x - r.w, r.y, r.w, r.h);
+    }
   }
 
-  function drawB(x, y, w, p1, p2) {
-    // draw top circle
-    let c1 = {
-      x: x - (w / 3) * (1 - p1),
-      y: y,
-      w: w / 2,
-    };
-    p.fill(colors.fg1);
-    p.ellipse(c1.x, c1.y, c1.w);
-
-    // draw bottom circle
-    let c2 = {
-      x: x - (w / 2) * (1 - p2),
-      y: y + w / 3,
-      w: (2 * w) / 3,
-    };
-    p.fill(colors.fg2);
-    p.ellipse(c2.x, c2.y, c2.w);
-
-    // draw mask
-    p.fill(colors.bg);
-    p.rect(x - w / 2, y, (2 * w) / 3, w);
-  }
-
-  function drawE(x, y, w, p1) {
-    // draw rect
-    let r = {
-      x: x + (3 * w) / 5,
-      y: y,
-      w: ((3 * w) / 5) * p1,
-      h: w,
-    };
-    p.fill(colors.fg1);
-    p.rect(r.x - r.w, r.y, r.w, r.h);
-  }
-}
-
-export const P5Canvas = (props) => {
   // create a reference to the container in which the p5 instance should place the canvas
   const p5ContainerRef = useRef();
 
@@ -229,15 +243,16 @@ export const P5Canvas = (props) => {
     return () => {
       p5Instance.remove();
     };
-  }, []);
+  }, [isDark]);
 
   return (
     <HeaderContainer
       style={{
         width: "100%",
-        height: "100%",
-        backgroundColor: "rgb(255, 241, 152)",
+        height: "800px",
+        backgroundColor: theme.background,
       }}
+      ref={containerRef}
     >
       <P5Container ref={p5ContainerRef} />
     </HeaderContainer>
@@ -245,6 +260,9 @@ export const P5Canvas = (props) => {
 };
 
 const HeaderContainer = styled.div`
+  // animation
+  transition: ${styles.transition.body};
+
   // flexbox
   display: flex;
   flex-direction: column;

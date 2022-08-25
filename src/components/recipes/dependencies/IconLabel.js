@@ -13,6 +13,7 @@ export const IconLabel = (props) => {
   const { layout } = useContext(LayoutContext);
   const { theme } = useContext(ThemeContext);
   let isMiddle = props.isStacked && !props.isTop && !props.isBottom;
+  let transparentColor = functions.addAlpha(props.color, 0.3);
   return (
     <IconLabelDiv
       onMouseEnter={() => setIsHovered(true)}
@@ -30,7 +31,7 @@ export const IconLabel = (props) => {
           backgroundColor: props.isActive
             ? props.color
             : isHovered
-            ? theme.hover
+            ? transparentColor
             : "transparent",
           // padding: props.isStacked ? 0 : null,
           marginTop: props.isStacked && !props.isTop ? 0 : null,
