@@ -37,7 +37,7 @@
     ],
     "learned": [
         "How to <b>design</b>, <b>plan</b>, and <b>build</b> a React app as a <b>solo developer</b>",
-        "How to manage complex <b>component state</b> using <b>React hooks</b> such as <b>useState</b>",
+        "How to manage complex <b>component state</b> using <b>React hooks</b>",
         "How to train a <b>crow</b> to solve my <b>sudoku</b> for me"
     ]
 }

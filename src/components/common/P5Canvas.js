@@ -1,7 +1,14 @@
 import { useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 import p5 from "p5";
-import { pallete, ThemeContext, styles, LayoutContext } from "../../context";
+import { IconButton } from "../recipes/dependencies";
+import {
+  pallete,
+  ThemeContext,
+  styles,
+  units,
+  LayoutContext,
+} from "../../context";
 
 const t = {
   g1: 0,
@@ -29,7 +36,6 @@ const width = {
 };
 let colors;
 let frame = 0;
-let resize = 0;
 let reverse = false;
 
 function springPercent(t) {
@@ -64,7 +70,7 @@ export const P5Canvas = (props) => {
 
       p.noStroke();
       p.ellipseMode(p.CORNER);
-      p.createCanvas(width.unit * 14, width.unit * 8);
+      p.createCanvas(width.unit * 14, width.unit * 6);
     };
 
     p.draw = function () {
@@ -88,41 +94,31 @@ export const P5Canvas = (props) => {
         );
       }
 
-      if (frame < frames.max || resize < 30 || frame % 30 === 0) {
-        // draw letters
-        p.background(colors.bg);
-        let xOffset = width.letter / 5;
-        drawG(width.unit + xOffset, width.unit * 2, width.letter, t.g1, t.g2);
-        drawB(
-          width.unit * 7 + xOffset,
-          width.unit * 2,
-          width.letter,
-          t.b1,
-          t.b2
-        );
-        drawE(width.unit * 10 + xOffset, width.unit * 2, width.letter, t.e);
-        drawA(width.unit * 4 + xOffset, width.unit * 2, width.letter, t.a);
-      }
+      // draw letters
+      p.background(colors.bg);
+      let xOffset = (3 * width.letter) / 20;
+      drawG(width.unit + xOffset, width.unit * 1.5, width.letter, t.g1, t.g2);
+      drawB(
+        width.unit * 7 + xOffset,
+        width.unit * 1.5,
+        width.letter,
+        t.b1,
+        t.b2
+      );
+      drawE(width.unit * 10 + xOffset, width.unit * 1.5, width.letter, t.e);
+      drawA(width.unit * 4 + xOffset, width.unit * 1.5, width.letter, t.a);
 
-      if (reverse) {
-        frame--;
-      } else {
-        frame++;
-      }
+      // update frame values
+      if (reverse) frame--;
+      else frame++;
 
-      if (frame >= frames.max) {
-        reverse = !reverse;
-      } else if (frame === 0) {
-        reverse = !reverse;
-      }
-
-      resize++;
+      if (frame >= frames.max) reverse = !reverse;
+      else if (frame === 0) reverse = !reverse;
     };
 
     p.windowResized = function () {
       updateWidth();
-      p.resizeCanvas(width.unit * 14, width.unit * 8);
-      resize = 0;
+      p.resizeCanvas(width.unit * 14, width.unit * 6);
     };
 
     function updateWidth() {
@@ -257,12 +253,112 @@ export const P5Canvas = (props) => {
   return (
     <HeaderContainer
       style={{
-        width: "100%",
         height: `calc(2.5 * ${layout.height.hero})`,
+        marginBottom: `calc(0.5 * ${layout.height.hero})`,
         backgroundColor: theme.background,
+        color: theme.foreground,
       }}
     >
+      <Header
+        style={{
+          fontSize: layout.fontSize.h1,
+          color: pallete[isDark][1],
+          maxWidth: layout.width.ingredients,
+        }}
+      >
+        <span>p</span>
+        <span>r</span>
+        <span>o</span>
+        <span>j</span>
+        <span>e</span>
+        <span>c</span>
+        <span>t</span>
+        <span>s</span>
+        <span> </span>
+        <span>b</span>
+        <span>y</span>
+      </Header>
       <P5Container ref={p5ContainerRef} />
+
+      <Header2
+        style={{
+          fontSize: layout.fontSize.h2,
+          color: pallete[isDark][2],
+          maxWidth: `calc(${layout.width.ingredients} / 2)`,
+        }}
+      >
+        <span>j</span>
+        <span>u</span>
+        <span>m</span>
+        <span>p</span>
+        <span> </span>
+        <span>t</span>
+        <span>o</span>
+      </Header2>
+      <RowDiv
+        style={{
+          fontSize: layout.fontSize.h3,
+          color: pallete[isDark][1],
+          maxWidth: layout.width.ingredients,
+        }}
+      >
+        <IconButton
+          title={"recipes"}
+          label={"recipes"}
+          color={pallete[isDark][1]}
+          textColor={pallete[isDark][1]}
+          isToggle
+          isCentered
+          isActive={false}
+          onClick={() => {
+            document
+              .getElementById("recipes")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+        <div
+          style={{
+            color: pallete[isDark][2],
+          }}
+        >
+          -
+        </div>
+        <IconButton
+          title={"sudokoo"}
+          label={"sudokoo"}
+          color={pallete[isDark][1]}
+          textColor={pallete[isDark][1]}
+          isToggle
+          isCentered
+          isActive={false}
+          onClick={() => {
+            document
+              .getElementById("sudokoo")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+        <div
+          style={{
+            color: pallete[isDark][2],
+          }}
+        >
+          -
+        </div>
+        <IconButton
+          title={"uzumaki"}
+          label={"uzumaki"}
+          color={pallete[isDark][1]}
+          textColor={pallete[isDark][1]}
+          isToggle
+          isCentered
+          isActive={false}
+          onClick={() => {
+            document
+              .getElementById("uzumaki")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+      </RowDiv>
     </HeaderContainer>
   );
 };
@@ -276,9 +372,56 @@ const HeaderContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-content: center;
+
+  // box model
+  width: 100%;
+`;
+
+const RowDiv = styled.div`
+  // flexbox
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  // box model
+  margin: 0 auto;
+  padding: 0 ${units.rem2};
+  padding-top: ${units.rem5};
+  width: calc(100vw - 2 * ${units.rem2});
+`;
+
+const Header = styled.h1`
+  // flexbox
+  display: flex;
+  justify-content: space-around;
+
+  // box model
+  margin: 0 auto;
+  padding: 0 ${units.rem2};
+  width: calc(100vw - 2 * ${units.rem2});
+
+  // typography
+  white-space: pre;
+`;
+
+const Header2 = styled.h2`
+  // animation
+  /* animation: fadeIn 6s; */
+
+  // flexbox
+  display: flex;
+  justify-content: space-around;
+
+  // box model
+  margin: 0 auto;
+  padding: 0 ${units.rem1};
+  width: 100%;
+
+  // typography
+  white-space: pre;
 `;
 
 const P5Container = styled.div`
   // box model
-  margin: auto;
+  margin: 0 auto;
 `;

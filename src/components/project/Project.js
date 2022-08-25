@@ -27,7 +27,7 @@ export const Project = (props) => {
   });
 
   return (
-    <ProjectDiv style={{ fontFamily: props.fontFamily }}>
+    <ProjectDiv style={{ fontFamily: props.fontFamily }} id={props.url}>
       <ContentContainer width={layout.width.ingredients}>
         <props.components.Header.tag
           text={props.name}

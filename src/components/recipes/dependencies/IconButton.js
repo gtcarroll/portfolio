@@ -31,7 +31,11 @@ export const IconButton = (props) => {
       <DisplayDiv
         style={{
           fontSize: layout.fontSize.body,
-          color: props.isActive ? theme.background : theme.foreground,
+          color: props.isActive
+            ? theme.background
+            : props.textColor
+            ? props.textColor
+            : theme.foreground,
           backgroundColor: props.isActive
             ? props.color
             : isHovered
