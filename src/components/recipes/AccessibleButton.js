@@ -42,6 +42,9 @@ AccessibleButton.defaultProps = {
 };
 
 const AccessibleButtonDiv = styled.div`
+  // animation
+  transition: ${styles.transition.body};
+
   // flexbox
   display: flex;
   flex-direction: column;

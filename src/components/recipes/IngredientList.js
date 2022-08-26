@@ -92,7 +92,7 @@ const IngredientsListDiv = styled.div`
 
 const IngredientsCard = styled.div`
   // animation
-  transition: width ${styles.transition.body};
+  transition: ${styles.transition.body};
 
   // flexbox
   display: flex;
